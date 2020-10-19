@@ -16,6 +16,7 @@ urlpatterns = [
 
 #""""""GYM"""""""""
     path('api/gym/', views.GymView.as_view(), name='api-event'),
+    path('api/gym/<int:id>/', views.GymDetailView.as_view(), name='api-gym-detail'),
     path('api/gymcreate/', views.CreateGymView.as_view(), name='api-create'),
     path('api/update/gym/<int:gym_id>/', views.UpdateGymView.as_view(), name='api-update-even'),
 

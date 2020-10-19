@@ -46,6 +46,17 @@ class GymUpdateSerializer(serializers.ModelSerializer):
 		fields='__all__'
 
 
+class GymDetailSerializer(serializers.ModelSerializer):
+    classes = serializers.SerializerMethodField()
+    class Meta:
+        model =Gym
+        fields = ['name', 'image','classes']
+    def get_classes(self,obj):
+        classes = Class.objects.filter(gym=obj)
+        return ClassSerializer(classes,many=True).data
+
+
+
 
 #""""""Class"""""""""
 class CreateClassSerializer(serializers.ModelSerializer):

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.generics import ListAPIView, RetrieveAPIView,CreateAPIView,RetrieveUpdateAPIView,DestroyAPIView
 from .models import Gym,Class,Booking
 from .serializers import (SignUpSerializer,GymSerializer,CreateGymSerializer,GymUpdateSerializer,CreateClassSerializer,ClassSerializer,
-BookingSerializer,)
+BookingSerializer,GymDetailSerializer,)
 from rest_framework.permissions import IsAuthenticated,IsAdminUser
 from rest_framework.filters import SearchFilter,OrderingFilter
 from datetime import datetime
@@ -33,6 +33,18 @@ class UpdateGymView(RetrieveUpdateAPIView):
 	permission_classes = [IsAuthenticated,IsAdminUser]
 	lookup_field = 'id'
 	lookup_url_kwarg = 'gym_id'
+
+
+class GymDetailView(ListAPIView):
+	lookup_field = "id"
+	lookup_url_kwarg = "id"
+	# queryset = Gym.objects.get(id=self.kwargs.get("event_id"))
+	serializer_class = GymDetailSerializer
+	def get_queryset(self):
+		gym = Gym.objects.filter(id=self.kwargs.get("id"))
+		return gym
+	filter_backends = [SearchFilter,OrderingFilter]
+	search_fields = ['title', 'type']
 
 
 
@@ -78,13 +90,13 @@ class BookView(CreateAPIView):
 
 
 class MyBookings(ListAPIView):
-    lookup_field = "id"
-    lookup_url_kwarg = "user_id"
-    serializer_class = BookingSerializer
-    permission_classes = [IsAuthenticated]
+	lookup_field = "id"
+	lookup_url_kwarg = "user_id"
+	serializer_class = BookingSerializer
+	permission_classes = [IsAuthenticated]
 
-    def get_queryset(self):
-        return Booking.objects.filter(user=self.request.user)
+	def get_queryset(self):
+		return Booking.objects.filter(user=self.request.user)
 
 
 class CancelBooking(DestroyAPIView):
