@@ -8,24 +8,24 @@ from rest_framework.filters import SearchFilter,OrderingFilter
 from datetime import datetime
 from django.core.mail import send_mail
 from .permissions import IsBookingOwner, IsChangable
-from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-from rest_framework_simplejwt.views import TokenObtainPairView
+# from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+# from rest_framework_simplejwt.views import TokenObtainPairView
 
 #""""""Token"""""""""
-class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
-	def validate(self, attrs):
-		data = super().validate(attrs)
-		refresh = self.get_token(self.user)
-		data['refresh'] = str(refresh)
-		data['access'] = str(refresh.access_token)
-		data['username'] = self.user.username
-		data['email'] = self.user.email
-		data['isAdmin']=self.user.IsAdminUser
-		return data
-
-
-class MyTokenObtainPairView(TokenObtainPairView):
-	serializer_class = MyTokenObtainPairSerializer
+# class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+# 	def validate(self, attrs):
+# 		data = super().validate(attrs)
+# 		refresh = self.get_token(self.user)
+# 		data['refresh'] = str(refresh)
+# 		data['access'] = str(refresh.access_token)
+# 		data['username'] = self.user.username
+# 		data['email'] = self.user.email
+# 		data['isAdmin']=self.user.IsAdminUser
+# 		return data
+#
+#
+# class MyTokenObtainPairView(TokenObtainPairView):
+# 	serializer_class = MyTokenObtainPairSerializer
 
 #""""""Auth"""""""""
 class SignUp(CreateAPIView):

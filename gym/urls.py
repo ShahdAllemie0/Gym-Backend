@@ -11,7 +11,7 @@ from rest_framework_simplejwt.views import (
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('token/', views.MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
+    # path('token/', views.MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
 # """""Auth""""""""
     path('api/login/', TokenObtainPairView.as_view(), name='api-login'),
     path('api/signup/', views.SignUp.as_view(), name='api-signup'),
