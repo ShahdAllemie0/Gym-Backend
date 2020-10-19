@@ -9,6 +9,9 @@ class Gym(models.Model):
     name=models.CharField(max_length=120)
     image = models.ImageField(blank = True,null=True)
 
+    def __str__(self):
+        return self.name
+
 
 #""""""Class"""""""""
 class Class(models.Model):
@@ -30,6 +33,9 @@ class Class(models.Model):
     gym=models.ForeignKey(Gym,on_delete=models.CASCADE,related_name='classGym')
 
 
+    def __str__(self):
+        return self.title
+
 # class GymUser(models.Model):
 #     user = models.OneToOneField(User, on_delete=models.CASCADE)
 #     image = models.ImageField(blank = True,null=True)
@@ -41,6 +47,8 @@ class Booking(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE,related_name='users')
     classes=models.ForeignKey(Class,on_delete=models.CASCADE,related_name='classes')
 
+    def __str__(self):
+        return f'{self.user} - {self.Booking_id}'
 
 #""""""Profile"""""""""
 class Profile(models.Model):

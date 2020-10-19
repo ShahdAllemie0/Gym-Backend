@@ -46,7 +46,11 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+<<<<<<< HEAD
    'corsheaders.middleware.CorsMiddleware',
+=======
+    'corsheaders.middleware.CorsMiddleware',
+>>>>>>> f23837e9f778437290c1ca70868a14ec678953e6
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -79,7 +83,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'gym.wsgi.application'
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
-       'http://localhost:4200',
+       'http://localhost:3000',
 )
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
