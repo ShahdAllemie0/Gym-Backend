@@ -40,7 +40,7 @@ class GymView(ListAPIView):
 
 
 class CreateGymView(CreateAPIView):
-	permission_classes = [IsAuthenticated,IsAdminUser]
+	# permission_classes = [IsAuthenticated,IsAdminUser]
 	serializer_class = CreateGymSerializer
 
 
