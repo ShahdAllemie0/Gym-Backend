@@ -46,11 +46,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-<<<<<<< HEAD
-   'corsheaders.middleware.CorsMiddleware',
-=======
     'corsheaders.middleware.CorsMiddleware',
->>>>>>> f23837e9f778437290c1ca70868a14ec678953e6
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -59,7 +55,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
 
 
 ROOT_URLCONF = 'gym.urls'
